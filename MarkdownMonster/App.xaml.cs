@@ -149,7 +149,7 @@ namespace MarkdownMonster
             if (mmApp.Configuration.DisableHardwareAcceleration)
                 RenderOptions.ProcessRenderMode = System.Windows.Interop.RenderMode.SoftwareOnly;
 
-            // always set directory tocurrent location
+            // always set directory to current location
             var dir = Assembly.GetExecutingAssembly().Location;
             Directory.SetCurrentDirectory(Path.GetDirectoryName(dir));
 
@@ -320,38 +320,7 @@ namespace MarkdownMonster
 
         private void ThemeCustomizations()
         {
-            // Custom MahApps Light Theme based on Blue
-            ThemeManager.AddAccent("MahLight", new Uri("Styles/MahLightAccents.xaml", UriKind.RelativeOrAbsolute));
-
-            Uri resourceUri = null;
-
-            // Add Dark Menu Customizations
-            if (mmApp.Configuration.ApplicationTheme == Themes.Dark)
-            {
-                resourceUri = new Uri("Styles/MahMenuCustomizations.xaml", UriKind.RelativeOrAbsolute);
-                Current.Resources.MergedDictionaries.Add(
-                    new ResourceDictionary() {Source = resourceUri});
-
-                var dragablzLightStyles = new Uri("Styles/DragablzGeneric.xaml", UriKind.RelativeOrAbsolute);
-                Current.Resources.MergedDictionaries.Add(
-                    new ResourceDictionary() {Source = dragablzLightStyles});
-
-                resourceUri = new Uri("Styles/MahDarkResources.xaml", UriKind.RelativeOrAbsolute);
-                Current.Resources.MergedDictionaries.Add(
-                    new ResourceDictionary() {Source = resourceUri});
-            }
-            else
-            {
-                var dragablzLightStyles = new Uri("Styles/DragablzGenericLight.xaml", UriKind.RelativeOrAbsolute);
-                Current.Resources.MergedDictionaries.Add(
-                    new ResourceDictionary() {Source = dragablzLightStyles});
-
-                resourceUri = new Uri("Styles/MahLightResources.xaml", UriKind.RelativeOrAbsolute);
-                Current.Resources.MergedDictionaries.Add(
-                    new ResourceDictionary() {Source = resourceUri});
-            }
-
-            mmApp.SetTheme(mmApp.Configuration.ApplicationTheme, App.Current.MainWindow as MetroWindow);
+            mmApp.ChangeAppThemeAtRuntime();
         }
 
 

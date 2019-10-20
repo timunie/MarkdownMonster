@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid Background="{StaticResource  SidebarHeaderBackground}">
+        <Grid Background="{DynamicResource SidebarHeaderBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />

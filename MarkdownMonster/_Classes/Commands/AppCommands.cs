@@ -2222,13 +2222,15 @@ We're now shutting down the application.
 
                     mmApp.Configuration.Write();
 
-                    window.PipeManager.StopServer();
-                    window.ForceClose = true;
-                    window.Close();
+                    //window.PipeManager.StopServer();
+                    //window.ForceClose = true;
+                    //window.Close();
 
-                    // execute with delay
-                    ShellUtils.ExecuteProcess(Path.Combine(App.InitialStartDirectory, "MarkdownMonster.exe"), "-delay");
-                    Environment.Exit(0);
+                    //// execute with delay
+                    //ShellUtils.ExecuteProcess(Path.Combine(App.InitialStartDirectory, "MarkdownMonster.exe"), "-delay");
+                    //Environment.Exit(0);
+
+                    mmApp.ChangeAppThemeAtRuntime();
                 }
             }, (p, c) => true);
         }

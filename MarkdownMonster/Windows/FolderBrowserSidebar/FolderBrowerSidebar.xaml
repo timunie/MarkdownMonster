@@ -102,7 +102,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Name="SearchPanel" Visibility="Collapsed">
-            <Grid Background="{StaticResource  SidebarHeaderBackground}">
+            <Grid Background="{DynamicResource  SidebarHeaderBackground}">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -168,7 +168,7 @@
                 <RowDefinition Name="ImagePreviewColumn"  Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Grid Background="{StaticResource  SidebarHeaderBackground}">
+            <Grid Background="{DynamicResource  SidebarHeaderBackground}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />

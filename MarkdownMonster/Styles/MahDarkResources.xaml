@@ -8,16 +8,6 @@
 
 
     <!--<Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MahAppsTabablzControlStyle}">-->
-    <Style x:Key="MarkdownMonsterTrapezoidDragableTabItemStyle"
-           TargetType="{x:Type dragablz:DragablzItem}" BasedOn="{StaticResource TrapezoidDragableTabItemStyle}">
-    </Style>
-
-    <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource {x:Type dragablz:TabablzControl}}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MarkdownMonsterTrapezoidDragableTabItemStyle}" />
-        <Setter Property="AdjacentHeaderItemOffset" Value="-12" />
-        <Setter Property="ShowDefaultAddButton" Value="True" />
-        <Setter Property="ShowDefaultCloseButton" Value="True" />
-    </Style>
 
     <Style TargetType="{x:Type Hyperlink}">
         <Setter Property="Foreground" Value="#009DE0" />
@@ -36,7 +26,7 @@
 
     <!-- Colors -->
     <Color x:Key="Gray6">DarkGray</Color>
-    <SolidColorBrush x:Key="TextBoxBorderBrush" Color="{StaticResource Gray6}" options:Freeze="True" />
+    <SolidColorBrush x:Key="TextBoxBorderBrush" Color="{DynamicResource Gray6}" options:Freeze="True" />
 
     <SolidColorBrush x:Key="BlueItem" Color="#70B8FF" />
     <SolidColorBrush x:Key="LightThemeTitleBackground" Color="#D5DAE8" />
@@ -49,7 +39,7 @@
             BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="FontSize" Value="19" />
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Foreground" Value="{StaticResource BlueItem}" />
+        <Setter Property="Foreground" Value="{DynamicResource BlueItem}" />
         <Setter Property="Padding" Value="5,2,5,3" />
     </Style>
 
@@ -57,7 +47,7 @@
            BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Foreground" Value="{StaticResource HeadlineColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource HeadlineColor}" />
         <Setter Property="Margin" Value="0,18,0,2" />
     </Style>
 

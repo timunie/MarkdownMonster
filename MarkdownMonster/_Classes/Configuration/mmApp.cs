@@ -20,6 +20,7 @@ using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Microsoft.Win32;
+using System.Linq;
 
 namespace MarkdownMonster
 {
@@ -584,8 +585,6 @@ Markdown Monster v{version}
                 ThemeManager.ChangeAppStyle(Application.Current,
                     ThemeManager.GetAccent("Blue"),
                     ThemeManager.GetAppTheme("BaseDark")); // or appStyle.Item1
-
-
             }
 
             if (window != null)
@@ -620,6 +619,87 @@ Markdown Monster v{version}
                 window.BorderBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#ccc");
             }
         }
+
+
+        public static string[] LightThemeDictionaries = new string[]
+        {
+            "Styles/DragablzGenericLight.xaml",
+            "Styles/MahLightResources.xaml"
+        };
+
+        public static string[] DarkThemeDictionaries = new string[]
+        {
+            "Styles/MahMenuCustomizations.xaml",
+            "Styles/DragablzGeneric.xaml",
+            "Styles/MahDarkResources.xaml"
+        };
+
+        public static void ChangeAppThemeAtRuntime()
+        {
+            // Custom MahApps Light Theme based on Blue
+            if (!ThemeManager.Accents.Any(x => x.Name == "MahLight"))
+            {
+                ThemeManager.AddAccent("MahLight", new Uri("Styles/MahLightAccents.xaml", UriKind.RelativeOrAbsolute));
+            }
+
+
+            Uri resourceUri = null;
+
+            // Clear Merged Dictionaries
+            foreach (var dictionary in Application.Current.Resources.MergedDictionaries.ToList())
+            {
+                if (LightThemeDictionaries.Contains(dictionary.Source.ToString()))
+                {
+                    Application.Current.Resources.MergedDictionaries.Remove(dictionary);
+                }
+
+                if (DarkThemeDictionaries.Contains(dictionary.Source.ToString()))
+                {
+                    Application.Current.Resources.MergedDictionaries.Remove(dictionary);
+                }
+            }
+
+            // Add Themes
+            if (mmApp.Configuration.ApplicationTheme == Themes.Dark)
+            {
+                foreach (var dictionary in DarkThemeDictionaries)
+                {
+                    resourceUri = new Uri(dictionary, UriKind.RelativeOrAbsolute);
+                    Application.Current.Resources.MergedDictionaries.Add(
+                                        new ResourceDictionary() { Source = resourceUri });
+                }
+
+                foreach (var dictionary in Application.Current.Resources.MergedDictionaries.ToList())
+                {
+                    if (LightThemeDictionaries.Contains(dictionary.Source.ToString()))
+                    {
+                        Application.Current.Resources.MergedDictionaries.Remove(dictionary);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var dictionary in LightThemeDictionaries)
+                {
+                    resourceUri = new Uri(dictionary, UriKind.RelativeOrAbsolute);
+                    Application.Current.Resources.MergedDictionaries.Add(
+                                        new ResourceDictionary() { Source = resourceUri });
+                }
+
+                foreach (var dictionary in Application.Current.Resources.MergedDictionaries.ToList())
+                {
+                    if (DarkThemeDictionaries.Contains(dictionary.Source.ToString()))
+                    {
+                        Application.Current.Resources.MergedDictionaries.Remove(dictionary);
+                    }
+                }
+            }
+
+
+
+            mmApp.SetTheme(mmApp.Configuration.ApplicationTheme, App.Current.MainWindow as MetroWindow);
+        }
+
         #endregion
     }
 
