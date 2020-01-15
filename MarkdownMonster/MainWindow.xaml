@@ -433,8 +433,11 @@
                 <MenuItem Header="External Preview" IsCheckable="True" IsChecked="{Binding IsExternalPreview}" Command="{Binding Commands.PreviewModesCommand}" CommandParameter="ExternalPreviewWindow"/>
                 
                 <Separator/>
-                
+
                 <MenuItem Header="View in Web _Browser" 
+                          Command="{Binding Commands.ViewInExternalBrowserCommand}"
+                          InputGestureText="Shift+F12"
+                          IsEnabled="{Binding IsEditorActive}" />
 
                 <!--  I don't know at which Position you like this. So feel free to move these  -->
                 <MenuItem Header="Disable automatic script refresh"
