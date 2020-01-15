@@ -310,7 +310,7 @@ namespace MarkdownMonster.Windows.PreviewBrowser
 
                                             var lineText = editor.GetLine(editorLineNumber).Trim();
 
-                                            interop.UpdateDocumentContent(renderedHtml,highlightLineNo);
+                                            interop.UpdateDocumentContent(renderedHtml,highlightLineNo, !Model.IsAutorefreshScriptsDisabled);
 
                                             // TODO: We need to get Header Ids
                                             var headerId = string.Empty; // headers may not have pragma lines
@@ -329,7 +329,7 @@ namespace MarkdownMonster.Windows.PreviewBrowser
                                                 interop.ScrollToHtmlBlock(lineText);
                                         }
                                         else
-                                            interop.UpdateDocumentContent(renderedHtml,0);
+                                            interop.UpdateDocumentContent(renderedHtml,0, !Model.IsAutorefreshScriptsDisabled);
                                     }
                                     catch
                                     {

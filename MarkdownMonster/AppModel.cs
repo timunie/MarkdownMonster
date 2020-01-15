@@ -297,6 +297,20 @@ namespace MarkdownMonster
         }
 
 
+        /// <summary>
+        /// Determines whether to Autorefresh the Preview. 
+        /// </summary>
+        public bool IsAutorefreshScriptsDisabled
+        {
+            get { return Configuration.IsAutorefreshScriptsDisabled; }
+            set
+            {
+                Configuration.IsAutorefreshScriptsDisabled = value;
+                Window.PreviewBrowser.Refresh(true);
+                OnPropertyChanged(nameof(IsAutorefreshScriptsDisabled));
+            }
+        }
+
 
         public bool IsFullScreen
         {

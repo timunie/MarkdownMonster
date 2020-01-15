@@ -70,6 +70,12 @@ namespace MarkdownMonster.Utilities
                     Command = model.Commands.ViewInExternalBrowserCommand,
                     CommandParameter = "Toggle"
                 },
+                new AppKeyBinding
+                {
+                    Key="Ctrl+R",
+                    Command = model.Commands.RefreshPreviewCommand,
+                    CommandName = "RefreshPreview"
+                },
 
                 // Document Commands
                 new AppKeyBinding

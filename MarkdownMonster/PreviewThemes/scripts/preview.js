@@ -270,7 +270,7 @@ function highlightCode(lineno) {
 //        });
 //}
 
-function updateDocumentContent(html, lineno) {
+function updateDocumentContent(html, lineno, firePreviewUpdatedEvent) {
   te.isPreviewEditorSync = te.mmEditor.isPreviewToEditorSync();
   
   var el = document.getElementById("MainContent");
@@ -280,13 +280,16 @@ function updateDocumentContent(html, lineno) {
   el.innerHTML = html;
   highlightCode(lineno);
   
-  // Raise a previewUpdated event on the document
-  var event = document.createEvent("Event");
-  event.initEvent("previewUpdated", false, true);
+  // Raise a previewUpdated event on the document if enabled
+  if (firePreviewUpdatedEvent == true) {
+    var event = document.createEvent("Event");
+    event.initEvent("previewUpdated", false, true);
 
-  event.target = el;
-  event.currentTarget = el;
-  document.dispatchEvent(event);
+    event.target = el;
+    event.currentTarget = el;
+    document.dispatchEvent(event);
+  }
+  
 }
 
 function scrollToPragmaLine(lineno, headerId, noScrollTimeout, noScrollTopAdjustment) {

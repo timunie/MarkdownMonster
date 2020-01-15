@@ -435,6 +435,11 @@
                 <Separator/>
                 
                 <MenuItem Header="View in Web _Browser" 
+
+                <!--  I don't know at which Position you like this. So feel free to move these  -->
+                <MenuItem Header="Disable automatic script refresh"
+                          IsCheckable="True"
+                          IsChecked="{Binding IsAutorefreshScriptsDisabled}" />
                           Command="{Binding Commands.ViewInExternalBrowserCommand}"
                           InputGestureText="Shift+F12"
                           IsEnabled="{Binding IsEditorActive}" />
@@ -799,14 +804,130 @@
 
                     </ToolBar>
 
-					<ToolBar Name="ToolbarAddIns" Visibility="Hidden" FontSize="17">
-                        <Button Name="ButtonGit" Command="{Binding Commands.Git.CommitToGitCommand}" 
-                                ToolTip="Git Operations: Commit, Push, Pull, Clone, Create (Alt+G)">
-                            <Image Source="assets/git.png" Height="19" Margin="0,0,2,0"/>
+                    <ToolBar x:Name="ToolBarPreviewView">
+                        <ToggleButton x:Name="TogglebuttonDisableScriptAutorun"
+                                      Focusable="False"
+                                      IsChecked="{Binding IsAutorefreshScriptsDisabled}"
+                                      ToolTip="Disable or Enable autmatic script refresh.">
+                            <Viewbox Height="19" Stretch="Uniform">
+                                <Canvas Width="32" Height="32">
+                                    <Canvas>
+                                        <Canvas.RenderTransform>
+                                            <TranslateTransform X="0" Y="-265" />
+                                        </Canvas.RenderTransform>
+                                        <Canvas>
+                                            <Canvas.RenderTransform>
+                                                <MatrixTransform Matrix="1.5307682 0 0 1.5307682 -8.8431782 -150.15861" />
+                                            </Canvas.RenderTransform>
+                                            <Path Stroke="{DynamicResource BlackBrush}"
+                                                  StrokeEndLineCap="Flat"
+                                                  StrokeLineJoin="Miter"
+                                                  StrokeMiterLimit="4"
+                                                  StrokeStartLineCap="Flat"
+                                                  StrokeThickness="2">
+                                                <Path.Data>
+                                                    <PathGeometry Figures="m 10.583333 287.73958 v -11.90625 c 0 -1.32291 1.322917 -2.64583 2.645834 -2.64583 h 9.260416 c 1.322917 0 2.645834 1.32292 2.645833 2.64583 v 1.32292 h -3.96875 -1.322916" FillRule="NonZero" />
+                                                </Path.Data>
+                                            </Path>
+                                            <Path Stroke="{DynamicResource BlackBrush}"
+                                                  StrokeEndLineCap="Flat"
+                                                  StrokeLineJoin="Miter"
+                                                  StrokeMiterLimit="4"
+                                                  StrokeStartLineCap="Flat"
+                                                  StrokeThickness="2">
+                                                <Path.Data>
+                                                    <PathGeometry Figures="m 22.489583 273.1875 c -1.322916 0 -2.645833 1.32292 -2.645833 3.96875 v 10.58333 c 0 3.43959 -3.96875 3.43959 -3.96875 0 H 7.9374999 c 1e-7 1.32292 1e-7 2.64584 2.6458331 2.64584 h 7.408334" FillRule="NonZero" />
+                                                </Path.Data>
+                                            </Path>
+                                            <Canvas Opacity="1">
+                                                <Canvas.RenderTransform>
+                                                    <ScaleTransform ScaleX="0.77458224" ScaleY="1.2910185" />
+                                                </Canvas.RenderTransform>
+                                                <Path Fill="{DynamicResource BlackBrush}"
+                                                      Stroke="{DynamicResource BlackBrush}"
+                                                      StrokeMiterLimit="4"
+                                                      StrokeThickness="0">
+                                                    <Path.Data>
+                                                        <PathGeometry Figures="m 18.549664 215.73643 v 2.97005 q 0 0.61243 -0.456316 1.06074 -0.456315 0.44831 -1.088751 0.44831 -0.380263 0 -0.748517 -0.17212 -0.364252 -0.17612 -0.79655 -0.5724 v -1.24085 q 0 -0.12009 0.04803 -0.17212 0.04803 -0.052 0.120083 -0.052 0.07605 0 0.124085 0.052 0.04803 0.052 0.04803 0.17212 l -0.004 1.08074 q 0.308213 0.2842 0.60842 0.4283 0.30421 0.14009 0.600415 0.14009 0.328226 0 0.620428 -0.16011 0.220152 -0.12008 0.400276 -0.40428 0.184128 -0.28419 0.184128 -0.60842 v -2.97005 h -1.31691 q -0.124086 0 -0.176121 -0.044 -0.05204 -0.048 -0.05204 -0.12408 0 -0.0761 0.05204 -0.12009 0.05204 -0.048 0.176121 -0.048 h 2.457697 q 0.120083 0 0.172119 0.048 0.05204 0.044 0.05204 0.12009 0 0.0761 -0.05204 0.12408 -0.05204 0.044 -0.172119 0.044 z" FillRule="NonZero" />
+                                                    </Path.Data>
+                                                </Path>
+                                                <Path Fill="{DynamicResource BlackBrush}"
+                                                      Stroke="{DynamicResource BlackBrush}"
+                                                      StrokeMiterLimit="4"
+                                                      StrokeThickness="0">
+                                                    <Path.Data>
+                                                        <PathGeometry Figures="m 23.352981 215.73643 v -0.11207 q 0 -0.12009 0.04403 -0.17212 0.04803 -0.052 0.124086 -0.052 0.07605 0 0.120083 0.052 0.04803 0.052 0.04803 0.17212 v 0.85659 q 0 0.12008 -0.04803 0.17212 -0.04403 0.052 -0.120083 0.052 -0.07205 0 -0.120083 -0.048 -0.04403 -0.048 -0.04803 -0.15611 -0.02001 -0.33623 -0.34824 -0.60442 -0.324224 -0.26818 -0.852589 -0.26818 -0.556385 0 -0.884611 0.2882 -0.328227 0.28419 -0.328227 0.67246 0 0.20014 0.09206 0.36425 0.09206 0.16412 0.244168 0.26819 0.152105 0.10007 0.344238 0.16411 0.192133 0.06 0.600415 0.12809 0.684472 0.11208 0.944652 0.22816 0.348241 0.15611 0.524362 0.4323 0.180125 0.27619 0.180125 0.65245 0 0.5764 -0.460318 0.98468 -0.460318 0.40428 -1.240857 0.40428 -0.876606 0 -1.400968 -0.54838 v 0.19213 q 0 0.12008 -0.04803 0.17212 -0.04403 0.052 -0.120083 0.052 -0.07205 0 -0.120083 -0.052 -0.04803 -0.052 -0.04803 -0.17212 v -0.92864 q 0 -0.12409 0.04403 -0.17612 0.04803 -0.052 0.124086 -0.052 0.07205 0 0.11608 0.048 0.04803 0.048 0.05204 0.15611 0.02001 0.36826 0.392271 0.67247 0.37626 0.3002 1.008697 0.3002 0.632437 0 0.996688 -0.31621 0.368254 -0.31622 0.368254 -0.74852 0 -0.26418 -0.140096 -0.46832 -0.140097 -0.20815 -0.416288 -0.32823 -0.192133 -0.0841 -0.800553 -0.18813 -0.836577 -0.1401 -1.204832 -0.4283 -0.368254 -0.2882 -0.368254 -0.82056 0 -0.52837 0.42029 -0.90863 0.424293 -0.38026 1.116771 -0.38026 0.704487 0 1.212838 0.4443 z" FillRule="NonZero" />
+                                                    </Path.Data>
+                                                </Path>
+                                            </Canvas>
+                                        </Canvas>
+                                        <Path Fill="{DynamicResource WhiteBrush}"
+                                              Opacity="1"
+                                              Stroke="{DynamicResource BlackBrush}"
+                                              StrokeEndLineCap="Round"
+                                              StrokeMiterLimit="4"
+                                              StrokeStartLineCap="Round"
+                                              StrokeThickness="4">
+                                            <Path.Data>
+                                                <PathGeometry Figures="m -19.164832 289.85623 a 5.7060022 5.7060022 0 0 1 -5.706002 5.706 5.7060022 5.7060022 0 0 1 -5.706003 -5.706 5.7060022 5.7060022 0 0 1 5.706003 -5.706 5.7060022 5.7060022 0 0 1 5.706002 5.706 z" FillRule="NonZero" />
+                                            </Path.Data>
+                                            <Path.RenderTransform>
+                                                <ScaleTransform ScaleX="-1" ScaleY="1" />
+                                            </Path.RenderTransform>
+                                        </Path>
+                                        <Canvas Name="g850">
+                                            <Canvas.RenderTransform>
+                                                <MatrixTransform Matrix="-2.0000001 0 0 2.0000001 75.14167 -293.56045" />
+                                            </Canvas.RenderTransform>
+                                            <Path Stroke="{DynamicResource BlackBrush}"
+                                                  StrokeEndLineCap="Flat"
+                                                  StrokeLineJoin="Miter"
+                                                  StrokeMiterLimit="4"
+                                                  StrokeStartLineCap="Flat"
+                                                  StrokeThickness="2">
+                                                <Path.Data>
+                                                    <PathGeometry Figures="M 26.458333 293.03125 23.8125 290.38542" FillRule="NonZero" />
+                                                </Path.Data>
+                                            </Path>
+                                            <Path Stroke="{DynamicResource BlackBrush}"
+                                                  StrokeEndLineCap="Flat"
+                                                  StrokeLineJoin="Miter"
+                                                  StrokeMiterLimit="4"
+                                                  StrokeStartLineCap="Flat"
+                                                  StrokeThickness="2">
+                                                <Path.Data>
+                                                    <PathGeometry Figures="m 23.8125 293.03125 2.645833 -2.64583" FillRule="NonZero" />
+                                                </Path.Data>
+                                            </Path>
+                                        </Canvas>
+                                    </Canvas>
+                                </Canvas>
+                            </Viewbox>
+                        </ToggleButton>
+
+                        <Button x:Name="ButtonUpdatePreview"
+                                Margin="7,0,0,0"
+                                Command="{Binding Commands.RefreshPreviewCommand}"
+                                Focusable="False"
+                                ToolTip="Update the Preview">
+                            <fa:FontAwesome FontSize="17" Icon="Refresh" />
                         </Button>
-                        
-					</ToolBar>
-					
+
+                    </ToolBar>
+
+                    <ToolBar Name="ToolbarAddIns"
+                             FontSize="17"
+                             Visibility="Hidden">
+                        <Button Name="ButtonGit"
+                                Command="{Binding Commands.Git.CommitToGitCommand}"
+                                ToolTip="Git Operations: Commit, Push, Pull, Clone, Create (Alt+G)">
+                            <Image Height="19"
+                                   Margin="0,0,2,0"
+                                   Source="assets/git.png" />
+                        </Button>
+
+                    </ToolBar>
+
                 </StackPanel>
             </ToolBarPanel>
         </StackPanel>

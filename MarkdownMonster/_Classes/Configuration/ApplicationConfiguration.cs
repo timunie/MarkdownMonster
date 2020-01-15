@@ -137,6 +137,23 @@ namespace MarkdownMonster
         }
         private PreviewModes _PreviewMode = PreviewModes.InternalPreview;
 
+
+        /// <summary>
+        /// Defines if the scripts in the preview should run with every change. If the value is true, then elements rendered by a script will be shown as plain text until a manual refresh.
+        /// </summary>
+        public bool IsAutorefreshScriptsDisabled
+        {
+            get { return AlwaysUsePreviewRefresh ? false : _IsAutorefreshScriptsDisabled; }
+            set
+            {
+                if (value == _IsAutorefreshScriptsDisabled) return;
+                _IsAutorefreshScriptsDisabled = value;
+                OnPropertyChanged(nameof(IsAutorefreshScriptsDisabled));
+            }
+        }
+        private bool _IsAutorefreshScriptsDisabled = false;
+
+
         /// <summary>
         /// If set to true causes Http links in the Previewer
         /// to be opened in the default system Web Browser

@@ -35,9 +35,9 @@ namespace MarkdownMonster
             SetEx("previewer.highlightTimeout", timeout);
         }
 
-        public void UpdateDocumentContent(string html, int lineNo)
+        public void UpdateDocumentContent(string html, int lineNo, bool fireUpdatePreviewEvent)
         {
-            Invoke("updateDocumentContent", html, lineNo);
+            Invoke("updateDocumentContent", html, lineNo, fireUpdatePreviewEvent);
         }
 
         /// <summary>
